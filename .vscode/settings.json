@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "R_D sandbox.sln"
+    "dotnet.defaultSolution": "R-D_Sandbox.sln"
 }
