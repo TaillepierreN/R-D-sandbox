@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4e9ead215f12f8c46b9f80df66890df3, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -231,6 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131012293}
+  - component: {fileID: 1131012294}
   m_Layer: 0
   m_Name: CamPivot
   m_TagString: Untagged
@@ -254,6 +255,20 @@ Transform:
   - {fileID: 1492125206}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+--- !u!114 &1131012294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131012292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c0ec483cbd08245b1074bd01ea9d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1974765520}
+  smoothTime: 0.2
 --- !u!1 &1492125203
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +493,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1974765520 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4637124146579624, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
+  m_PrefabInstance: {fileID: 2034884624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2034884624
 PrefabInstance:
   m_ObjectHideFlags: 0
