@@ -6,13 +6,20 @@ using UnityEngine.UIElements;
 
 public class enemyBehavior : MonoBehaviour
 {
-	[SerializeField] GameObject target;
+	GameObject target;
 	[SerializeField] Transform RayOrigin;
 	NavMeshAgent navMeshAgent;
 	RaycastHit hit;
+	Animator mobAnim;
+	int isWalkingHash;
+	int isRunningHash;
 
     private void Awake() {
 		navMeshAgent = GetComponent<NavMeshAgent>();
+		mobAnim = GetComponent<Animator>();
+		isWalkingHash = Animator.StringToHash("isWalking");
+		isRunningHash = Animator.StringToHash("isRunning");
+		target = GameObject.FindGameObjectWithTag("Player");
 	}
 
 
@@ -20,21 +27,34 @@ public class enemyBehavior : MonoBehaviour
     void Update()
     {
 		var distance = Vector3.Distance(transform.position, target.transform.position);
-		
-		if (distance > 5.0f)
+		Vector3 direction = (target.transform.position - RayOrigin.position).normalized;
+
+		direction.y = 0;  // Make the ray horizontal if vertical component is not critical
+
+		if (distance < 15.0f)
 		{
-			if (Physics.Raycast(RayOrigin.position, target.transform.position, out hit))
+			Debug.DrawRay(RayOrigin.position, direction * 100, Color.green);
+			if (Physics.Raycast(RayOrigin.position, direction, out hit))
 			{
-				Debug.DrawRay(RayOrigin.position, hit.point, Color.green);
 				if (hit.transform.name == "Player")
 				{
-					Debug.Log("i see the player");
 					navMeshAgent.SetDestination(target.transform.position);
+					mobAnim.SetBool(isWalkingHash, true);
+					mobAnim.SetBool(isRunningHash, true);
+					
 				}
 			}
 		} else
 		{
 			navMeshAgent.SetDestination(transform.position);
+			mobAnim.SetBool(isWalkingHash, false);
+			mobAnim.SetBool(isRunningHash, false);
 		}
     }
+
+	void handleAnimation()
+	{
+		bool isWalking = mobAnim.GetBool(isWalkingHash);
+		bool isRunning = mobAnim.GetBool(isRunningHash);
+	}
 }
