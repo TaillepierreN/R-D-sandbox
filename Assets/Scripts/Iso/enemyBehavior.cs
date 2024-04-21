@@ -31,7 +31,7 @@ public class enemyBehavior : MonoBehaviour
 
 		direction.y = 0;  // Make the ray horizontal if vertical component is not critical
 
-		if (distance < 15.0f)
+		if (distance < 10.0f)
 		{
 			Debug.DrawRay(RayOrigin.position, direction * 100, Color.green);
 			if (Physics.Raycast(RayOrigin.position, direction, out hit))
