@@ -136,6 +136,7 @@ public class isoCharacterMovement : MonoBehaviour
 	{
 		handleRotation();
 		handleAnimation();
+		handleGravity();
 		if (isRunPressed)
 		{
 			characterController.Move(currentRunMovement * Time.deltaTime);
